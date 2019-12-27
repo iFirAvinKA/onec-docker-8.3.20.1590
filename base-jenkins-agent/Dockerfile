@@ -61,7 +61,7 @@ RUN apt-get update \
     scrot \
   && rm -rf /var/lib/apt/lists/*
 
-RUN echo 'scrot "${@:2}"' | tee /usr/local/bin/nircmd \
+RUN echo '#!/bin/bash\n\nscrot "${@:2}"' | tee /usr/local/bin/nircmd \
   && chmod +x /usr/local/bin/nircmd \
   && rm -rf /etc/services.d/onec
 
