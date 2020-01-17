@@ -19,8 +19,8 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E03280
     /tmp/*
 
 # Installing oscript
-ARG OVM_REPOSITORY_OWNER=nixel2007
-ARG OVM_VERSION=1.0.0-RC12
+ARG OVM_REPOSITORY_OWNER=oscript-library
+ARG OVM_VERSION=1.0.0-RC13
 ARG ONESCRIPT_VERSION=stable
 
 RUN wget https://github.com/${OVM_REPOSITORY_OWNER}/ovm/releases/download/v${OVM_VERSION}/ovm.exe \
