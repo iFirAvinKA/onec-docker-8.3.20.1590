@@ -13,6 +13,7 @@ RUN apt-get update \
       apt-transport-https \
       ca-certificates \
       gnupg \
+      dirmngr \
       openssh-client \
       software-properties-common \
       wget \
