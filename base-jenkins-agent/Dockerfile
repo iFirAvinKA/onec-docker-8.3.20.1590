@@ -33,11 +33,12 @@ ENV OSCRIPTBIN=/root/.local/share/ovm/current/bin
 ENV PATH="$OSCRIPTBIN:$PATH"
 
 # Update and prepare oscript packages
-RUN opm install opm \
-  && opm update --all \
-  && opm install \
+# RUN opm install opm \
+#  && opm update --all \
+RUN opm install \
     add \
     gitsync \
+    logos \
     vanessa-runner \
   && gitsync plugins init \
   && gitsync plugins enable limit \
