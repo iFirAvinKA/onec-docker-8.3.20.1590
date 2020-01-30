@@ -35,10 +35,10 @@ ENV PATH="$OSCRIPTBIN:$PATH"
 # Update and prepare oscript packages
 # RUN opm install opm \
 #  && opm update --all \
-RUN opm install \
+RUN opm install opm@0.15.3 \
+  && opm install \
     add \
     gitsync \
-    logos \
     vanessa-runner \
   && gitsync plugins init \
   && gitsync plugins enable limit \
