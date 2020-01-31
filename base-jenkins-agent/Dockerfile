@@ -21,7 +21,7 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E03280
 # Installing oscript
 ARG OVM_REPOSITORY_OWNER=oscript-library
 ARG OVM_VERSION=v1.0.0-RC14
-ARG ONESCRIPT_VERSION=stable
+ARG ONESCRIPT_VERSION=dev
 
 RUN wget https://github.com/${OVM_REPOSITORY_OWNER}/ovm/releases/download/${OVM_VERSION}/ovm.exe \
   && mv ovm.exe /usr/local/bin/ \
@@ -33,11 +33,12 @@ ENV OSCRIPTBIN=/root/.local/share/ovm/current/bin
 ENV PATH="$OSCRIPTBIN:$PATH"
 
 # Update and prepare oscript packages
-# RUN opm install opm \
-#  && opm update --all \
-RUN opm install add \
-    && opm install vanessa-runner \
-    && opm install gitsync \
+RUN opm install opm \
+  && opm update --all \
+  && opm install \
+    add \
+    gitsync \
+    vanessa-runner \
   && gitsync plugins init \
   && gitsync plugins enable limit \
   && gitsync plugins disable limit
