@@ -11,6 +11,7 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E03280
   && apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
     mono-runtime \
+    ca-certificates-mono \
     libmono-i18n4.0-all \
     libmono-system-runtime-serialization4.0-cil \
   && cert-sync --user /etc/ssl/certs/ca-certificates.crt \
