@@ -4,7 +4,7 @@ ARG ONEC_VERSION
 FROM ${DOCKER_USERNAME}/onec-client-vnc-jenkins:${ONEC_VERSION}
 
 # Installing mono and oscript dependencies
-ARG MONO_VERSION=5.20.1.34
+ARG MONO_VERSION=6.8.0.96
 
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF \
   && echo "deb http://download.mono-project.com/repo/debian stable-stretch/snapshots/${MONO_VERSION} main" > /etc/apt/sources.list.d/mono-official-stable.list \
@@ -13,6 +13,7 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E03280
     mono-runtime \
     libmono-i18n4.0-all \
     libmono-system-runtime-serialization4.0-cil \
+  && cert-sync --user /etc/ssl/certs/ca-certificates.crt \
   && rm -rf  \
     /var/lib/apt/lists/* \
     /var/cache/debconf \
