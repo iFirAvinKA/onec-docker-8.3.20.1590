@@ -35,3 +35,9 @@ RUN apt-get update \
     /var/cache/debconf
 
 RUN chmod 755 /init
+
+COPY ./base-jenkins-agent/docker-entrypoint.sh /
+RUN chmod 755 /docker-entrypoint.sh \
+  && chmod +x /docker-entrypoint.sh
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
