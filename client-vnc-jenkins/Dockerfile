@@ -1,7 +1,8 @@
 ARG DOCKER_USERNAME
 ARG ONEC_VERSION
+ARG BASE_IMAGE=onec-client-vnc
 
-FROM ${DOCKER_USERNAME}/onec-client-vnc:${ONEC_VERSION}
+FROM ${DOCKER_USERNAME}/${BASE_IMAGE}:${ONEC_VERSION}
 
 LABEL maintainer="Nikita Gryzlov <NikGryzlov@1bit.com>, FirstBit"
 
