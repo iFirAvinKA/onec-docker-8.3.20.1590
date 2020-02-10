@@ -34,7 +34,7 @@ RUN apt-get update \
     /var/lib/apt/lists/* \
     /var/cache/debconf
 
-COPY ./base-jenkins-agent/docker-entrypoint.sh /
+COPY ./client-vnc-jenkins/docker-entrypoint.sh /
 RUN chmod 755 /docker-entrypoint.sh \
   && chmod +x /docker-entrypoint.sh
 
