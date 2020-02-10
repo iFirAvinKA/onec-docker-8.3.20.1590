@@ -15,7 +15,7 @@ RUN apk --no-cache add bash curl grep \
   && for file in *.tar.gz; do tar -zxf "$file"; done \
   && rm -rf *.tar.gz
 
-FROM i386/debian:stretch-slim as base
+FROM debian:stretch-slim as base
 
 ARG gosu_ver=1.11
 ARG nls_enabled=false
@@ -37,7 +37,7 @@ ADD https://github.com/tianon/gosu/releases/download/$gosu_ver/gosu-i386 /bin/go
 
 RUN chmod +x /bin/gosu
 
-FROM i386/debian:stretch-slim
+FROM debian:stretch-slim
 LABEL maintainer="Anton Kvashenkin <anton.jugatsu@gmail.com> (@jugatsu)"
 
 ARG onec_uid="999"
