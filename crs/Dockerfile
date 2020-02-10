@@ -3,7 +3,7 @@ FROM alpine:latest as downloader
 ARG ONEC_USERNAME
 ARG ONEC_PASSWORD
 ARG ONEC_VERSION
-ENV installer_type=server
+ENV installer_type=server32
 
 COPY ./scripts/download.sh /download.sh
 
