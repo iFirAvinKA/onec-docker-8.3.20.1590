@@ -13,6 +13,8 @@ RUN apt-get update \
 
 COPY ./crs-apache/1crs.conf /etc/apache2/conf-available/
 RUN ln -s /etc/apache2/conf-available/1crs.conf /etc/apache2/conf-enabled/1crs.conf
+RUN echo "export APACHE_RUN_DIR=/etc/apache2\$SUFFIX" >> /etc/apache2/envvars \
+  && echo "export APACHE_PID_FILE=/etc/apache2\$SUFFIX/apache2.pid" >> /etc/apache2/envvars 
 
 COPY ./crs-apache/.1ccr /home/usr1cv8/.1cv8
 
