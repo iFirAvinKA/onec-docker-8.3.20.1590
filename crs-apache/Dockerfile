@@ -16,7 +16,7 @@ RUN ln -s /etc/apache2/conf-available/1crs.conf /etc/apache2/conf-enabled/1crs.c
 RUN echo "export APACHE_RUN_DIR=/etc/apache2\$SUFFIX" >> /etc/apache2/envvars \
   && echo "export APACHE_PID_FILE=/etc/apache2\$SUFFIX/apache2.pid" >> /etc/apache2/envvars 
 
-COPY ./crs-apache/.1ccr /home/usr1cv8/.1cv8
+COPY ./crs-apache/repo.1ccr /home/usr1cv8/.1cv8
 
 COPY ./crs-apache/docker-entrypoint.sh /
 RUN chmod 755 /docker-entrypoint.sh \
