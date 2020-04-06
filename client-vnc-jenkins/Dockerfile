@@ -7,7 +7,7 @@ FROM ${DOCKER_USERNAME}/${BASE_IMAGE}:${ONEC_VERSION}
 LABEL maintainer="Nikita Gryzlov <NikGryzlov@1bit.com>, FirstBit"
 
 # Install OpenJDK and additional Jenkins dependencies
-ARG OPENJDK_VERSION=13
+ARG OPENJDK_VERSION=14
 
 RUN apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
