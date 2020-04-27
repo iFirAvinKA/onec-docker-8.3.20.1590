@@ -1,7 +1,8 @@
 ARG DOCKER_USERNAME
 ARG ONEC_VERSION
+ARG BASE_IMAGE=onec-client-vnc-jenkins
 
-FROM ${DOCKER_USERNAME}/onec-client-vnc-jenkins:${ONEC_VERSION}
+FROM ${DOCKER_USERNAME}/${BASE_IMAGE}:${ONEC_VERSION}
 
 # Installing mono and oscript dependencies
 ARG MONO_VERSION=6.8.0.105
