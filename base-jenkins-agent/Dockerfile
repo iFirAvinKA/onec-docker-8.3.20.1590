@@ -41,6 +41,7 @@ RUN opm install opm \
   && opm install \
     add \
     gitsync \
+    stebi \
     vanessa-runner \
   && gitsync plugins init \
   && gitsync plugins enable limit \
