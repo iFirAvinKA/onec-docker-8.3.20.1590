@@ -16,6 +16,7 @@ RUN apt-get update \
       git \
       gnupg \
       dirmngr \
+      locales \
       openssh-client \
       software-properties-common \
       wget \
@@ -33,7 +34,10 @@ RUN apt-get update \
      libpng12-0 \
   && rm -rf  \
     /var/lib/apt/lists/* \
-    /var/cache/debconf
+    /var/cache/debconf  \
+  && localedef -i ru_RU -c -f UTF-8 -A /usr/share/locale/locale.alias ru_RU.UTF-8
+  
+ENV LANG ru_RU.UTF-8
 
 COPY ./client-vnc-jenkins/docker-entrypoint.sh /
 RUN chmod 755 /docker-entrypoint.sh \
