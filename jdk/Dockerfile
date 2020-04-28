@@ -1,12 +1,12 @@
-ARG DOCKER_USERNAME
-ARG ONEC_VERSION
-ARG BASE_IMAGE=onec-client-vnc
+ARG DOCKER_USERNAME=library
+ARG BASE_IMAGE=debian
+ARG BASE_TAG=stretch-slim
 
-FROM ${DOCKER_USERNAME}/${BASE_IMAGE}:${ONEC_VERSION}
+FROM ${DOCKER_USERNAME}/${BASE_IMAGE}:${BASE_TAG}
 
 LABEL maintainer="Nikita Gryzlov <NikGryzlov@1bit.com>, FirstBit"
 
-# Install OpenJDK and additional Jenkins dependencies
+# Install OpenJDK
 ARG OPENJDK_VERSION=14
 
 RUN apt-get update \
@@ -17,7 +17,6 @@ RUN apt-get update \
       gnupg \
       dirmngr \
       locales \
-      openssh-client \
       software-properties-common \
       wget \
   && wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | apt-key add - \
@@ -27,20 +26,6 @@ RUN apt-get update \
   && mkdir -p /usr/share/man/man1 \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
       adoptopenjdk-${OPENJDK_VERSION}-hotspot \
-  && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 40976EAF437D05B5 \
-  && echo "deb http://security.ubuntu.com/ubuntu xenial-security main" > /etc/apt/sources.list.d/xenial-security.list \
-  && apt-get update \
-  && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-     libpng12-0 \
-  && rm -rf  \
-    /var/lib/apt/lists/* \
-    /var/cache/debconf  \
   && localedef -i ru_RU -c -f UTF-8 -A /usr/share/locale/locale.alias ru_RU.UTF-8
-  
+
 ENV LANG ru_RU.UTF-8
-
-COPY ./client-vnc-jenkins/docker-entrypoint.sh /
-RUN chmod 755 /docker-entrypoint.sh \
-  && chmod +x /docker-entrypoint.sh
-
-ENTRYPOINT ["/docker-entrypoint.sh"]
