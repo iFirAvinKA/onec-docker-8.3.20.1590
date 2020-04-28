@@ -11,6 +11,7 @@ RUN apt-get update \
       git \
       locales \
       openssh-client \
+      wget \
   && localedef -i ru_RU -c -f UTF-8 -A /usr/share/locale/locale.alias ru_RU.UTF-8
 
 ENV LANG ru_RU.UTF-8
