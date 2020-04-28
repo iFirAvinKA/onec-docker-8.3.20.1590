@@ -55,8 +55,7 @@
 
 ## OneScript как Jenkins агент
 
-* oscript
-* jdk
+* oscript поверх library/adoptopenjdk:14-hotspot
 * jenkins-agent
 
 ## Сервер хранилища + Apache
