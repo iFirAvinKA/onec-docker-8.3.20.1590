@@ -15,7 +15,7 @@ RUN apt-get update \
 
 ENV LANG ru_RU.UTF-8
 
-COPY ./client-vnc-jenkins/docker-entrypoint.sh /
+COPY ./jenkins-agent/docker-entrypoint.sh /
 RUN chmod 755 /docker-entrypoint.sh \
   && chmod +x /docker-entrypoint.sh
 
