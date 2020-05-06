@@ -18,7 +18,7 @@
 * client
 * client-vnc
 * oscript
-* test-agent
+* test-utils
 
 ## 1C как Jenkins агент
 
