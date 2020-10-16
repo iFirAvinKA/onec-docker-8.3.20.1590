@@ -16,6 +16,7 @@ RUN apt-get update \
     xdg-utils \
     x11-xserver-utils \
     x11-utils \
+    xvfb \
   && env DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     xfce4 \
   && env DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
