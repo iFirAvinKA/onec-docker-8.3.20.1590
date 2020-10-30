@@ -56,6 +56,7 @@ RUN apt-get update \
     dirmngr \
     gnupg \
   && echo "deb http://http.debian.net/debian/ stretch main contrib non-free" > /etc/apt/sources.list \
+  && echo "deb http://http.debian.net/debian/ stretch-backports main" >> /etc/apt/sources.list \
   && echo "deb http://http.debian.net/debian/ stretch-updates main contrib non-free" >> /etc/apt/sources.list \
   && echo "deb http://security.debian.org/ stretch/updates main contrib non-free" >> /etc/apt/sources.list \
   && echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections \
@@ -64,7 +65,6 @@ RUN apt-get update \
   && apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
       ca-certificates \
-      git \
       locales \
       libwebkitgtk-3.0-0 \
       ttf-mscorefonts-installer \
@@ -77,6 +77,9 @@ RUN apt-get update \
       at-spi2-core \
       procps \
       x11vnc \
+  # Install git from backports
+  && DEBIAN_FRONTEND=noninteractive apt-get -t stretch-backports install -y --no-install-recommends \
+    git \
   && rm -rf  \
     /var/lib/apt/lists/* \
     /var/cache/debconf \

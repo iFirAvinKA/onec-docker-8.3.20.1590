@@ -6,7 +6,8 @@ FROM ${DOCKER_USERNAME}/${BASE_IMAGE}:${BASE_TAG}
 
 LABEL maintainer="Nikita Gryzlov <NikGryzlov@1bit.com>, FirstBit"
 
-RUN apt-get update \
+RUN set -xe \
+  && apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
       curl \
       git \
