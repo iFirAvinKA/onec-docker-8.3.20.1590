@@ -28,9 +28,9 @@ WORKDIR /tmp
 SHELL ["/bin/bash", "-c"]
 RUN set -xe; \
   if [ "$nls" = true ]; then \
-    dpkg -i 1c-enterprise83-{common,server,ws,crs}*.deb; \
+    dpkg -i 1c-enterprise*-{common,server,ws,crs}*.deb; \
   else \
-    dpkg -i 1c-enterprise83-{common,server,ws,crs}_*.deb; \
+    dpkg -i 1c-enterprise*-{common,server,ws,crs}_*.deb; \
   fi
 
 ADD https://github.com/tianon/gosu/releases/download/$gosu_ver/gosu-i386 /bin/gosu
