@@ -71,6 +71,7 @@ RUN apt-get update \
       libgsf-1-114 \
       libglib2.0-0 \
       libodbc1 \
+      libtcmalloc-minimal4 \
       libmagickwand-6.q16-3 \
       at-spi2-core \
       procps \
