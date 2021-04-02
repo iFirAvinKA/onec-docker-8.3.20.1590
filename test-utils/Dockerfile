@@ -9,6 +9,7 @@ RUN apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     cifs-utils \
     inetutils-ping \
+    pandoc \
     scrot \
   && rm -rf /var/lib/apt/lists/*
 
