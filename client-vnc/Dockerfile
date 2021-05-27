@@ -101,8 +101,6 @@ RUN groupadd -r usr1cv8 --gid=2001 \
   && chown -R usr1cv8:usr1cv8 /home/usr1cv8
 
 COPY ./configs/client-vnc/rootfs/ /
-RUN mv /opt/1cv8/copy-to-current/* /opt/1cv8/current/ \
-  && rm -rf /opt/1cv8/copy-to-current
 
 ENV DISPLAY=:0
 ENV DISPLAY_WIDTH=1440
