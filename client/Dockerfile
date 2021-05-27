@@ -45,6 +45,8 @@ RUN chmod +x /create-symlink-to-current-1cv8.sh \
   && /create-symlink-to-current-1cv8.sh \
   && rm /create-symlink-to-current-1cv8.sh
 
+COPY ./configs/client-vnc/rootfs/opt/1cv8/copy-to-current /opt/1cv8/current/
+
 FROM ubuntu:18.04
 LABEL maintainer="Anton Kvashenkin <anton.jugatsu@gmail.com> (@jugatsu)"
 
