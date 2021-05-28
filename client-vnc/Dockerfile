@@ -101,8 +101,6 @@ RUN groupadd -r usr1cv8 --gid=2001 \
   && chown -R usr1cv8:usr1cv8 /home/usr1cv8
 
 COPY ./configs/client-vnc/rootfs/ /
-RUN mkdir -p /opt/1cv8/x86_64/${ONEC_VERSION} \
-  && ln -s /opt/1C/v8.3/x86_64/conf /opt/1cv8/x86_64/${ONEC_VERSION}/conf
 
 ENV DISPLAY=:0
 ENV DISPLAY_WIDTH=1440

@@ -37,6 +37,12 @@ RUN set -xe; \
     dpkg -i 1c-enterprise83-thin-client_*.deb; \
   fi
 
+# create symlink to current 1c:enterprise directory
+COPY ./scripts/create-symlink-to-current-1cv8.sh /create-symlink-to-current-1cv8.sh
+RUN chmod +x /create-symlink-to-current-1cv8.sh \
+  && /create-symlink-to-current-1cv8.sh \
+  && rm /create-symlink-to-current-1cv8.sh
+
 FROM ubuntu:18.04
 LABEL maintainer="Anton Kvashenkin <anton.jugatsu@gmail.com> (@jugatsu)"
 
