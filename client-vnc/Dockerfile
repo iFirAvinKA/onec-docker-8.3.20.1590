@@ -2,7 +2,7 @@ ARG DOCKER_USERNAME
 ARG ONEC_VERSION
 FROM ${DOCKER_USERNAME}/onec-client:${ONEC_VERSION} as base
 
-FROM debian:stretch-slim
+FROM debian:buster-slim
 ARG ONEC_VERSION
 
 COPY --from=base /opt /opt
@@ -56,23 +56,23 @@ RUN apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     dirmngr \
     gnupg \
-  && echo "deb http://http.debian.net/debian/ stretch main contrib non-free" > /etc/apt/sources.list \
-  && echo "deb http://http.debian.net/debian/ stretch-backports main" >> /etc/apt/sources.list \
-  && echo "deb http://http.debian.net/debian/ stretch-updates main contrib non-free" >> /etc/apt/sources.list \
-  && echo "deb http://security.debian.org/ stretch/updates main contrib non-free" >> /etc/apt/sources.list \
+  && echo "deb http://http.debian.net/debian/ buster main contrib non-free" > /etc/apt/sources.list \
+  && echo "deb http://http.debian.net/debian/ buster-backports main" >> /etc/apt/sources.list \
+  && echo "deb http://http.debian.net/debian/ buster-updates main contrib non-free" >> /etc/apt/sources.list \
+  && echo "deb http://security.debian.org/ buster/updates main contrib non-free" >> /etc/apt/sources.list \
   && echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections \
   && apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
       ca-certificates \
+      git \
       locales \
-      libwebkitgtk-3.0-0 \
       ttf-mscorefonts-installer \
       libfontconfig1 \
       libgsf-1-114 \
       libglib2.0-0 \
       libodbc1 \
       libtcmalloc-minimal4 \
-      libmagickwand-6.q16-3 \
+      libmagickwand-6.q16-6 \
       at-spi2-core \
       procps \
       x11vnc \
@@ -82,9 +82,11 @@ RUN apt-get update \
   && apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
       libpng12-0 \
-  # Install git from backports
-  && DEBIAN_FRONTEND=noninteractive apt-get -t stretch-backports install -y --no-install-recommends \
-    git \
+  # Install libwebkitgtk from stretch
+  && echo "deb http://deb.debian.org/debian/ stretch main contrib non-free" > /etc/apt/sources.list.d/stretch.list \
+  && apt-get update \
+  && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    libwebkitgtk-3.0-0 \
   && rm -rf  \
     /var/lib/apt/lists/* \
     /var/cache/debconf \
