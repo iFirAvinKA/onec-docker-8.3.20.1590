@@ -2,7 +2,7 @@ ARG DOCKER_USERNAME
 ARG ONEC_VERSION
 FROM ${DOCKER_USERNAME}/onec-client:${ONEC_VERSION} as base
 
-FROM debian:buster-slim
+FROM debian:bullseye-slim
 ARG ONEC_VERSION
 
 COPY --from=base /opt /opt
@@ -20,46 +20,15 @@ RUN apt-get update \
     xvfb \
   && env DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     xfce4 \
-  && env DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    gtk3-engines-xfce \
-    libgtk-3-bin \
-    libpulse0 \
-    mousepad \
-    xfce4-notifyd \
-    xfce4-taskmanager \
-    xfce4-terminal \
-  && env DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    xfce4-battery-plugin \
-    xfce4-clipman-plugin \
-    xfce4-cpufreq-plugin \
-    xfce4-cpugraph-plugin \
-    xfce4-diskperf-plugin \
-    xfce4-datetime-plugin \
-    xfce4-fsguard-plugin \
-    xfce4-genmon-plugin \
-    xfce4-indicator-plugin \
-    xfce4-netload-plugin \
-    xfce4-notes-plugin \
-    xfce4-places-plugin \
-    xfce4-sensors-plugin \
-    xfce4-smartbookmark-plugin \
-    xfce4-systemload-plugin \
-    xfce4-timer-plugin \
-    xfce4-verve-plugin \
-    xfce4-weather-plugin \
-    xfce4-whiskermenu-plugin \
-  && env DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    libxv1 \
-    mesa-utils \
-    mesa-utils-extra \
+    xfce4-goodies \
   && sed -i 's%<property name="ThemeName" type="string" value="Xfce"/>%<property name="ThemeName" type="string" value="Raleigh"/>%' /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     dirmngr \
     gnupg \
-  && echo "deb http://http.debian.net/debian/ buster main contrib non-free" > /etc/apt/sources.list \
-  && echo "deb http://http.debian.net/debian/ buster-backports main" >> /etc/apt/sources.list \
-  && echo "deb http://http.debian.net/debian/ buster-updates main contrib non-free" >> /etc/apt/sources.list \
-  && echo "deb http://security.debian.org/ buster/updates main contrib non-free" >> /etc/apt/sources.list \
+  && echo "deb http://http.debian.net/debian/ bullseye main contrib non-free" > /etc/apt/sources.list \
+  && echo "deb http://http.debian.net/debian/ bullseye-backports main" >> /etc/apt/sources.list \
+  && echo "deb http://http.debian.net/debian/ bullseye-proposed-updates main contrib non-free" >> /etc/apt/sources.list \
+  && echo "deb http://security.debian.org/debian-security/ bullseye-security main contrib non-free" >> /etc/apt/sources.list \
   && echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections \
   && apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \

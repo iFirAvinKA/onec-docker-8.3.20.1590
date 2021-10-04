@@ -1,6 +1,6 @@
 ARG DOCKER_USERNAME=library
 ARG BASE_IMAGE=debian
-ARG BASE_TAG=stretch-slim
+ARG BASE_TAG=bullseye-slim
 
 FROM ${DOCKER_USERNAME}/${BASE_IMAGE}:${BASE_TAG}
 
