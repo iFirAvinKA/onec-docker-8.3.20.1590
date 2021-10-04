@@ -66,6 +66,12 @@ RUN apt-get update \
   && localedef -i ru_RU -c -f UTF-8 -A /usr/share/locale/locale.alias ru_RU.UTF-8
 ENV LANG ru_RU.UTF-8
 
+# remove DST Root CA X3 cert if it exists
+COPY ./scripts/remove-dst-root-ca-x3.sh /remove-dst-root-ca-x3.sh
+RUN chmod +x /remove-dst-root-ca-x3.sh \
+  && /remove-dst-root-ca-x3.sh \
+  && rm /remove-dst-root-ca-x3.sh
+
 RUN tar xzf /tmp/s6-overlay-amd64.tar.gz -C / \
   && rm -rf /tmp/s6-overlay-amd64.tar.gz
 

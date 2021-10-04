@@ -20,9 +20,6 @@ RUN apt-get update \
     ca-certificates-mono \
     libmono-i18n4.0-all \
     libmono-system-runtime-serialization4.0-cil \
-  # Remove expired DST_Root_CA_X3 cert
-  && rm /usr/share/ca-certificates/mozilla/DST_Root_CA_X3.crt \
-  && update-ca-certificates \
   && rm -rf /etc/apt/sources.list.d/mono-official-stable.list \
   && apt-get update \
   && cert-sync --user /etc/ssl/certs/ca-certificates.crt \
@@ -30,6 +27,12 @@ RUN apt-get update \
     /var/lib/apt/lists/* \
     /var/cache/debconf \
     /tmp/*
+
+# remove DST Root CA X3 cert if it exists
+COPY ./scripts/remove-dst-root-ca-x3.sh /remove-dst-root-ca-x3.sh
+RUN chmod +x /remove-dst-root-ca-x3.sh \
+  && /remove-dst-root-ca-x3.sh \
+  && rm /remove-dst-root-ca-x3.sh
 
 # Installing oscript
 ARG OVM_REPOSITORY_OWNER=oscript-library
