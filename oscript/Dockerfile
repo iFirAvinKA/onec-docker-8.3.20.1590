@@ -23,6 +23,8 @@ RUN apt-get update \
   # Remove expired DST_Root_CA_X3 cert
   && rm /usr/share/ca-certificates/mozilla/DST_Root_CA_X3.crt \
   && update-ca-certificates \
+  && rm -rf /etc/apt/sources.list.d/mono-official-stable.list \
+  && apt-get update \
   && cert-sync --user /etc/ssl/certs/ca-certificates.crt \
   && rm -rf  \
     /var/lib/apt/lists/* \
