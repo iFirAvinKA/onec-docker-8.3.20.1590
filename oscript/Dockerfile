@@ -20,6 +20,9 @@ RUN apt-get update \
     ca-certificates-mono \
     libmono-i18n4.0-all \
     libmono-system-runtime-serialization4.0-cil \
+  # Remove expired DST_Root_CA_X3 cert
+  && rm /usr/share/ca-certificates/mozilla/DST_Root_CA_X3.crt \
+  && update-ca-certificates \
   && cert-sync --user /etc/ssl/certs/ca-certificates.crt \
   && rm -rf  \
     /var/lib/apt/lists/* \
