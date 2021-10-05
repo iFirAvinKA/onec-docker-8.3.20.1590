@@ -39,6 +39,7 @@ RUN apt-get update \
       libfontconfig1 \
       libgsf-1-114 \
       libglib2.0-0 \
+      libgtk2.0-0 \
       libodbc1 \
       libtcmalloc-minimal4 \
       libmagickwand-6.q16-6 \
