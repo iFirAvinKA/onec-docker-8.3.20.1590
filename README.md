@@ -2,7 +2,7 @@
 
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)
 
-В данном репозитории находятся файлы для сборки образов [Docker](https://www.docker.com) с платформой [1С:Предприятие](http://v8.1c.ru) 8.3.
+В данном репозитории находятся файлы для сборки образов [Docker](https://www.docker.com) с платформой [1С:Предприятие](http://v8.1c.ru) 8.3.20+
 
 > Скрипт скачивания платформы позаимствован отсюда https://github.com/Infactum/onec_dock/blob/master/download.sh :+1:
 
@@ -67,6 +67,8 @@ docker build --build-arg ONEC_USERNAME=${ONEC_USERNAME} \
   -t ${DOCKER_USERNAME}/onec-server:${ONEC_VERSION} \
   -f server/Dockerfile .
 ```
+
+ВСЕ ЧТО НИЖЕ НЕ РАБОТАЕТ :( СОРЯН...
 
 ## Сервер с дополнительными языками
 [(Наверх)](#Оглавление)
